@@ -2,6 +2,7 @@ package com.biblioteca.auth_service.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -19,11 +20,13 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**", "/v3/api-docs/**", "/swagger-ui/**",
-                                "/swagger-ui.html", "/actuator/**")
+                        .requestMatchers("/auth/register", "/auth/login", "/v3/api-docs/**",
+                                "/swagger-ui/**", "/swagger-ui.html", "/actuator/**")
                         .permitAll()
+                        .requestMatchers("/auth/me").authenticated()
                         .anyRequest().denyAll()
-                );
+                )
+                .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()));
 
         return http.build();
     }
