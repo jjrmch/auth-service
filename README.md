@@ -1,5 +1,7 @@
 # Auth Service
 
+![CI](https://github.com/jjrmch/auth-service/actions/workflows/ci.yml/badge.svg)
+
 Microservicio de autenticación de la plataforma de gestión de biblioteca. Es el dueño de los usuarios y las credenciales (email + contraseña) y emite tokens JWT que el resto del ecosistema usa para autorizar peticiones.
 
 ## Qué hace
