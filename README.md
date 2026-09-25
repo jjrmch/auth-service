@@ -88,11 +88,18 @@ La plataforma completa se compone de:
 - [biblioteca-frontend](https://github.com/jjrmch/biblioteca-frontend) — panel web en React
 - [biblioteca-deploy](https://github.com/jjrmch/biblioteca-deploy) — docker-compose con el stack completo
 
+## Tests
+
+```bash
+./mvnw verify
+```
+
+22 tests: unitarios del servicio (Mockito) y de integración (`@SpringBootTest` + MockMvc + Testcontainers con PostgreSQL). Necesita Docker en marcha y se ejecutan también en CI en cada push y pull request (badge arriba).
+
 ## Por mejorar
 
 - No hay refresh tokens: cuando el JWT expira hay que volver a hacer login.
 - No hay gestión de usuarios por parte del ADMIN (crear bibliotecarios, desactivar cuentas, etc.).
-- No hay tests de negocio todavía, solo el test de contexto de Spring.
 
 ## Licencia
 
