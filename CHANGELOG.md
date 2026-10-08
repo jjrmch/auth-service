@@ -5,6 +5,12 @@ Todos los cambios relevantes de este proyecto se documentan en este archivo.
 El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/)
 y este proyecto sigue [Semantic Versioning](https://semver.org/lang/es/).
 
+## [1.1.0] - 2026-10-08
+
+### Cambiado
+
+- Los tests de integración comparten un único contenedor PostgreSQL (patrón singleton), evitando que el contexto cacheado de Spring apunte a un contenedor detenido al añadir nuevas clases de test
+
 ## [1.0.0] - 2026-10-05
 
 ### Añadido
